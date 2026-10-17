@@ -1,254 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nkwanta Yam Supply</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Nkwanta Yam Supply — Fresh Yams from Oti</title>
+  <meta name="description" content="Nkwanta Yam Supply connects trusted yam farmers in Nkwanta (Oti Region) with buyers across Ghana. Fresh, bulk and retail orders.">
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f8f1;
-      margin: 0;
-      color: #333333;
+    :root{
+      --brand:#176b3a;
+      --muted:#6b7280;
+      --bg:#f4f8f1;
+      --card:#ffffff;
+      --radius:12px;
+      --gap:20px;
     }
+    *{box-sizing:border-box}
+    body{font-family:Inter,system-ui,Arial,sans-serif;margin:0;background:var(--bg);color:#222}
+    header{background:linear-gradient(90deg,var(--brand),#1f9a4a);color:white;padding:28px 18px;text-align:center}
+    header .brand{font-weight:700;font-size:20px}
+    main{max-width:1000px;margin:18px auto;padding:18px}
+    .hero{display:grid;grid-template-columns:1fr;gap:18px;align-items:center}
+    .hero-inner{background:var(--card);padding:18px;border-radius:var(--radius);box-shadow:0 6px 18px rgba(23,107,58,0.06)}
+    .hero h1{margin:0 0 10px;font-size:26px;color:var(--brand)}
+    .hero p{margin:0;color:var(--muted)}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:16px}
 
-    header {
-      background-color: #176b3a;
-      color: white;
-      padding: 25px;
-      text-align: center;
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .card{background:var(--card);padding:14px;border-radius:10px}
+    .card h3{margin:0 0 8px;color:var(--brand);font-size:16px}
+    .card p{margin:0;color:var(--muted);font-size:14px}
+
+    .order, .price-calc{background:var(--card);padding:16px;border-radius:var(--radius)}
+    label{display:block;margin-top:12px;font-size:14px}
+    input,select,textarea{width:100%;padding:10px;border:1px solid #e5e7eb;border-radius:8px;margin-top:6px}
+    button{background:var(--brand);color:white;padding:12px 14px;border:none;border-radius:8px;font-weight:600;cursor:pointer;margin-top:12px}
+
+    footer{max-width:1000px;margin:18px auto;text-align:center;color:var(--muted);padding:12px}
+
+    .whatsapp{display:inline-block;background:#25D366;color:white;padding:10px 14px;border-radius:8px;text-decoration:none}
+
+    @media (max-width:900px){
+      .cards{grid-template-columns:repeat(2,1fr)}
     }
-
-    h1 {
-      color: #176b3a;
-      font-size: 28px;
-    }
-
-    h2 {
-      color: #176b3a;
-    }
-
-    main {
-      padding: 20px;
-    }
-
-    .card {
-      background-color: white;
-      padding: 20px;
-      border-radius: 12px;
-      margin-top: 20px;
-    }
-
-    button {
-      background-color: #176b3a;
-      color: white;
-      padding: 15px 25px;
-      border: none;
-      border-radius: 8px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-
-    #yamOrderForm label {
-      display: block;
-      margin-top: 15px;
-      margin-bottom: 5px;
-    }
-
-    #yamOrderForm input,
-    .calculator input {
-      box-sizing: border-box;
-      width: 100%;
-      padding: 12px;
-      border: 1px solid #cccccc;
-      border-radius: 8px;
-      font-size: 16px;
-    }
-
-    .calculator {
-      background-color: white;
-      margin: 20px 0;
-      padding: 20px;
-      border-radius: 12px;
-    }
-
-    #result {
-      color: #176b3a;
-      text-align: center;
-    }
-
-    #orderSummary {
-      margin-top: 20px;
-      padding: 15px;
-      background-color: #e8f5e9;
-      border-radius: 10px;
-      overflow-wrap: anywhere;
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      color: #666666;
-    }
-
-    #sendWhatsApp {
-      display: inline-block;
-      margin-top: 15px;
-      background: #176b3a;
-      color: white;
-      padding: 14px 18px;
-      border-radius: 8px;
-      text-decoration: none;
+    @media (max-width:640px){
+      .cards{grid-template-columns:1fr}
+      .hero{grid-template-columns:1fr}
     }
   </style>
 </head>
-
 <body>
   <header>
-    <h2>Nkwanta Yam Supply</h2>
-    <p>Fresh from our farms</p>
+    <div class="brand">Nkwanta Yam Supply</div>
+    <div style="font-size:14px;margin-top:6px">Fresh yams — from trusted farmers in Nkwanta, Oti Region</div>
   </header>
 
   <main>
-    <h1>Fresh Yams From Nkwanta</h1>
+    <section class="hero">
+      <div class="hero-inner">
+        <h1>Fresh Yams Direct from Nkwanta Farms</h1>
+        <p>We connect yam farmers in the Oti Region with buyers across Ghana. Bulk and retail orders supported, with delivery coordination and fast WhatsApp ordering.</p>
+        <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
+          <a class="whatsapp" id="heroWhatsApp" href="#" target="_blank" rel="noopener">Order on WhatsApp</a>
+          <a href="#order" style="background:#fff;border:1px solid #e6f0ea;padding:10px 12px;border-radius:8px;color:var(--brand);text-decoration:none">Prepare an order</a>
+        </div>
+      </div>
 
-    <p>
-      Connecting trusted yam farmers in Oti Region with buyers across Ghana.
-    </p>
-
-    <div class="card">
-      <h2>Our Services</h2>
-      <p>Fresh farm yams</p>
-      <p>Connecting farmers and buyers</p>
-      <p>Bulk supply enquiries</p>
-    </div>
-
-    <br>
-
-    <button onclick="showContact()">Contact Us</button>
-
-    <div id="contactInfo" style="display: none; margin-top: 15px;">
-      <h3>Contact Nkwanta Yam Supply</h3>
-      <p>Location: Nkwanta, Oti Region</p>
-      <p>Phone: 0537872554</p>
-    </div>
-
-    <section class="calculator">
-      <h2>Customer Yam Order Form</h2>
-
-      <form id="yamOrderForm">
-        <label for="customerName">Full Name:</label>
-        <input id="customerName" type="text" required placeholder="Enter your name">
-
-        <label for="customerPhone">Phone Number:</label>
-        <input id="customerPhone" type="tel" required placeholder="Enter your phone number">
-
-        <label for="orderQuantity">Number of Tubers:</label>
-        <input id="orderQuantity" type="number" min="1" step="1" required placeholder="e.g. 10">
-
-        <label for="deliveryLocation">Delivery Location:</label>
-        <input id="deliveryLocation" type="text" required placeholder="Town or community">
-
-        <button type="submit">Prepare My Order</button>
-      </form>
-
-      <div id="orderSummary" style="display: none;">
-        <h3>Order Summary</h3>
-        <p id="summaryName"></p>
-        <p id="summaryPhone"></p>
-        <p id="summaryQuantity"></p>
-        <p id="summaryLocation"></p>
-        <h3 id="summaryTotal"></h3>
-        <p>Your order summary is ready.</p>
+      <div style="display:flex;gap:12px;align-items:center">
+        <img alt="Yam tubers" src="https://images.unsplash.com/photo-1598511727123-fb1072b4d0b6?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=2b5dc6b7b2a9e6fb2f3b3f1a5c8c3d54" style="width:100%;border-radius:10px;object-fit:cover;max-height:220px">
       </div>
     </section>
 
-    <section class="calculator">
-      <h2>Yam Price Calculator</h2>
+    <section class="grid" style="margin-top:18px">
+      <div class="cards">
+        <div class="card">
+          <h3>Fresh Produce</h3>
+          <p>Hand-picked yams from local farms. Cleaned and sorted for quality.</p>
+        </div>
+        <div class="card">
+          <h3>Bulk Supply</h3>
+          <p>Large orders for markets, distributors and food businesses. Competitive pricing.</p>
+        </div>
+        <div class="card">
+          <h3>Delivery Support</h3>
+          <p>We help coordinate delivery to major towns across Ghana.</p>
+        </div>
+      </div>
 
-      <label>Number of yam tubers:</label>
-      <input type="number" id="quantity" min="1" step="1" placeholder="Enter quantity">
+      <div style="display:grid;grid-template-columns:1fr 320px;gap:16px">
+        <div class="order" id="order">
+          <h2 style="margin:0 0 8px;color:var(--brand)">Place an Order</h2>
+          <form id="orderForm">
+            <label for="name">Full name</label>
+            <input id="name" name="name" type="text" placeholder="e.g. Ama Mensah" required>
 
-      <label>Price per tuber (GH₵):</label>
-      <input type="number" id="price" min="0" step="0.01" placeholder="Enter price">
+            <label for="phone">Phone number</label>
+            <input id="phone" name="phone" type="tel" placeholder="e.g. 0551234567" required>
 
-      <button onclick="calculateTotal()">Calculate Total</button>
+            <label for="quantity">Quantity (tubers)</label>
+            <input id="quantityOrder" name="quantity" type="number" min="1" step="1" placeholder="10" required>
 
-      <h3 id="result"></h3>
+            <label for="pack">Packaging</label>
+            <select id="pack">
+              <option value="loose">Loose tubers</option>
+              <option value="crate">Crated (recommended for bulk)</option>
+            </select>
 
-      <a id="sendWhatsApp" href="#" target="_blank" rel="noopener">
-        Send Order on WhatsApp
-      </a>
+            <label for="location">Delivery town / location</label>
+            <input id="location" name="location" type="text" placeholder="e.g. Accra - Madina" required>
+
+            <label for="notes">Notes (optional)</label>
+            <textarea id="notes" rows="3" placeholder="Any delivery notes or preferred date"></textarea>
+
+            <button type="submit">Prepare order &amp; open WhatsApp</button>
+          </form>
+
+          <div id="summary" style="display:none;margin-top:12px;padding:12px;background:#f0fff4;border-radius:8px">
+            <strong>Order ready</strong>
+            <div id="summaryText" style="margin-top:8px;color:var(--muted)"></div>
+          </div>
+        </div>
+
+        <div class="price-calc">
+          <h3 style="margin:0 0 8px;color:var(--brand)">Price calculator</h3>
+          <label>Price per tuber (GH₵)</label>
+          <input id="unitPrice" type="number" min="0" step="0.01" value="20">
+
+          <label>Quantity</label>
+          <input id="calcQty" type="number" min="1" step="1" value="10">
+
+          <button id="calcBtn">Calculate</button>
+          <div id="calcResult" style="margin-top:10px;font-weight:600;color:var(--brand)"></div>
+
+          <div style="margin-top:14px;font-size:13px;color:var(--muted)">Ready to send the order? Use the WhatsApp button after preparing the order.</div>
+        </div>
+      </div>
     </section>
+
   </main>
 
   <footer>
-    Nkwanta, Oti Region, Ghana
+    © Nkwanta Yam Supply — Nkwanta, Oti Region • Phone: 0537872554
   </footer>
 
   <script>
-    function showContact() {
-      let contact = document.getElementById("contactInfo");
-      contact.style.display = contact.style.display === "none" ? "block" : "none";
+    // Default business WhatsApp number in international format (no plus)
+    const businessWhats = '233537872554';
+
+    function openWhatsAppLink(message) {
+      const base = 'https://wa.me/';
+      window.open(base + businessWhats + '?text=' + encodeURIComponent(message), '_blank');
     }
 
-    function calculateTotal() {
-      let quantity = Number(document.getElementById("quantity").value);
-      let price = Number(document.getElementById("price").value);
-      let result = document.getElementById("result");
+    // Hero quick-order link
+    document.getElementById('heroWhatsApp').href = '#';
+    document.getElementById('heroWhatsApp').addEventListener('click', function(e){
+      e.preventDefault();
+      const msg = 'Hello Nkwanta Yam Supply! I\'d like to place an order. Please advise on availability and pricing.';
+      openWhatsAppLink(msg);
+    });
 
-      if (
-        !Number.isInteger(quantity) ||
-        quantity <= 0 ||
-        document.getElementById("price").value === "" ||
-        price < 0 ||
-        document.getElementById("quantity").value === ""
-      ) {
-        result.innerText = "Please enter a valid quantity and price.";
+    // Price calculator
+    document.getElementById('calcBtn').addEventListener('click', function(){
+      const p = Number(document.getElementById('unitPrice').value);
+      const q = Number(document.getElementById('calcQty').value);
+      if (!q || q < 1 || isNaN(p) || p < 0) {
+        document.getElementById('calcResult').innerText = 'Enter valid quantity and price.';
+        return;
+      }
+      const total = (p * q).toFixed(2);
+      document.getElementById('calcResult').innerText = 'Total: GH₵ ' + total;
+    });
+
+    // Order form -> prepare message and open WhatsApp
+    document.getElementById('orderForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const qty = Number(document.getElementById('quantityOrder').value);
+      const pack = document.getElementById('pack').value;
+      const loc = document.getElementById('location').value.trim();
+      const notes = document.getElementById('notes').value.trim();
+
+      if (!name || !phone || !loc || !qty || qty < 1) {
+        alert('Please fill name, phone, quantity (>=1) and delivery location.');
         return;
       }
 
-      let total = quantity * price;
-      result.innerText = "Total Cost: GH₵ " + total.toFixed(2);
-    }
-  </script>
+      const unit = Number(document.getElementById('unitPrice').value) || 20;
+      const estTotal = (unit * qty).toFixed(2);
 
-  <script>
-    document.getElementById("yamOrderForm").addEventListener("submit", function(event) {
-      event.preventDefault();
+      const message = `NEW YAM ORDER - NKWANTA YAM SUPPLY\n\nCustomer: ${name}\nPhone: ${phone}\nQuantity: ${qty} tubers\nPackaging: ${pack}\nDelivery: ${loc}\nEstimated Total: GH₵ ${estTotal}\nNotes: ${notes}`;
 
-      let name = document.getElementById("customerName").value.trim();
-      let phone = document.getElementById("customerPhone").value.trim();
-      let quantity = Number(document.getElementById("orderQuantity").value);
-      let location = document.getElementById("deliveryLocation").value.trim();
+      // show a small summary on the page
+      document.getElementById('summaryText').innerText = `Estimated Total: GH₵ ${estTotal} — click to continue on WhatsApp.`;
+      document.getElementById('summary').style.display = 'block';
 
-      if (!name || !phone || !location || !Number.isInteger(quantity) || quantity < 1) {
-        alert("Please check all your order details.");
-        return;
-      }
-
-      let pricePerTuber = 20;
-      let total = quantity * pricePerTuber;
-
-      document.getElementById("summaryName").innerText = "Customer: " + name;
-      document.getElementById("summaryPhone").innerText = "Phone: " + phone;
-      document.getElementById("summaryQuantity").innerText = "Quantity: " + quantity + " tubers";
-      document.getElementById("summaryLocation").innerText = "Delivery: " + location;
-      document.getElementById("summaryTotal").innerText = "Estimated Total: GH₵ " + total.toFixed(2);
-
-      let businessWhatsApp = "233537872554";
-      let message =
-        "NEW YAM ORDER - NKWANTA YAM SUPPLY\n\n" +
-        "Customer: " + name + "\n" +
-        "Phone: " + phone + "\n" +
-        "Quantity: " + quantity + " tubers\n" +
-        "Delivery Location: " + location + "\n" +
-        "Estimated Total: GH₵ " + total.toFixed(2);
-
-      document.getElementById("sendWhatsApp").href =
-        "https://wa.me/" + businessWhatsApp + "?text=" + encodeURIComponent(message);
-
-      document.getElementById("orderSummary").style.display = "block";
+      // open WhatsApp
+      openWhatsAppLink(message);
     });
   </script>
 </body>
